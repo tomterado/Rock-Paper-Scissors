@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+
+
+
+        <script>
+
+            let playerWinScore = 0;
+            let computerWinScore = 0;
+            let tieScore = 0;
+
+            //Computer geneterated random choice
+            function computerPlay(){
+                var values = ["rock", "paper", "scissors"];
+                return randomResult = values[Math.floor(Math.random() * values.length)];
+            }
+
+            // come back and fix the null function for .toLowerCase();
+            function playerPlay(){
+                // let playerSelection; = prompt('Rock, paper or scissors?').toLowerCase();
+                let playerSelection; 
+                playerSelection = prompt('Rock, paper or scissors?')
+                if (!playerSelection){
+                    alert('Cancelled Game')
+                }
+                playerSelection = playerSelection.toLowerCase();
+                    while (playerSelection != 'rock' && playerSelection != 'scissors' && playerSelection != 'paper'){
+                        playerSelection = prompt('Try again. Rock, paper or scissors?').toLowerCase();
+                    }
+                return playerSelection;
+            }
+
+            // Play one round.
+            function playRound(){
+                //Match Results text
+
+                const playerSelection = playerPlay();
+                const computerSelection = computerPlay();
+
+                const win = "You Win!! " + playerSelection + " beats " + computerSelection
+                const lose = "You lose! " + computerSelection + " beats " + playerSelection
+                const tie = "It's a Tie "
+
+                if (playerSelection == "rock"){
+                    switch(computerSelection) {
+                        case "rock":
+                            tieScore++;
+                            return(tie);
+                            break;
+                        case "paper":
+                            computerWinScore++;
+                            return(lose);
+                            break;
+                        case "scissors":
+                            playerWinScore++;
+                            return(win);
+                            break;
+                    }
+                } else if (playerSelection == "scissors"){
+                    switch(computerSelection) {
+                        case "rock":
+                            computerWinScore++;
+                            return(lose);
+                            break;
+                        case "paper":
+                            playerWinScore++;
+                            return(win);
+                            break;
+                        case "scissors":
+                            tieScore++;
+                            return(tie);
+                            break;
+                    }
+                } else { // "paper"
+                    switch(computerSelection) {
+                        case "rock":
+                            playerWinScore++;
+                            return(win);
+                            break;
+                        case "paper":
+                            tieScore++;
+                            return(tie);
+                            break;
+                        case "scissors":
+                            computerWinScore++;
+                            return(lose);
+                            break;
+                }
+            }
+        }
+        
+        function game(){
+            let result;
+
+            for (var i=1; i<=5; i++){
+                result = playRound();
+                console.log("Round "+i +":" + result);
+                console.log("Score - PlayerWC: " + playerWinScore + " ComputerWC: " + computerWinScore + " TieWC: " + tieScore );
+            }
+
+            if(tieScore >= 3){
+                console.log("TIEEEEE");
+                tieScore = playerWinScore = computerWinScore = 0;
+            } else if(playerWinScore >= 2){
+                console.log("PLAYER WINNER");
+                tieScore = playerWinScore = computerWinScore = 0;
+            } else if (computerWinScore>= 2){
+                console.log("COMPUTER WINNER");
+                tieScore = playerWinScore = computerWinScore = 0;
+            } else {
+                console.log("???");
+                return;
+            }
+            
+        }
+
+        game();
+
+        </script>
+    </body>
+</html>
