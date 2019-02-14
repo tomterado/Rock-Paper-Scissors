@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <h1>Rock Paper Scissors Game</h1>
+
+        <p>Make your choice</p>
+
+        <button id="rock_button"> Rock </button>
+        <button id="paper_button"> PAPERRRRRR </button>
+        <button id="scissor_button"> Scissors </button>
+
+        <div id = "playerTextArea" ></div>
+        <div id = "computerTextArea" ></div>
+            
+        <script> 
+        
+        function buttonPress(){
+            var rockButtonPress = document.getElementById("rock_button").addEventListener("click", returnTrue);
+            // var rockButtonPress = document.getElementById("rock_button").addEventListener("click", playRound);
+
+        }
+        
+        function returnTrue() {
+            console.log("You pressed the button!")
+            // return true;
+        }
+
+
+        </script>
+    </body>
+</html>
