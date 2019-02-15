@@ -19,6 +19,8 @@ My thought/working process: <br>
 - My code is all over the player and not clean atm...
 - Realising that I might have to rewrite and reuse the code to achieve the end result
 
+Going to come back to it later...
+
 <br>
 
 3. XXX

@@ -13,8 +13,8 @@
 
         <p>Make your choice</p>
 
-        <button id="rock_button"> Rock </button>
-        <button id="paper_button"> PAPERRRRRR </button>
+        <button id="rock_button" onclick="returnTrue"> Rock </button>
+        <button id="paper_button"> Paper </button>
         <button id="scissor_button"> Scissors </button>
 
         <div id = "playerTextArea" ></div>
@@ -22,17 +22,46 @@
             
         <script> 
         
-        function buttonPress(){
-            var rockButtonPress = document.getElementById("rock_button").addEventListener("click", returnTrue);
-            // var rockButtonPress = document.getElementById("rock_button").addEventListener("click", playRound);
+        // var rockButtonPress = document.getElementById("rock_button").addEventListener("click", returnTrue, true);
+        // var paperButtonPress = document.getElementById("paper_button").addEventListener("click", returnTrue);
+        // var paperButtonPress = document.getElementById("scissor_button").addEventListener("click", returnTrue);
 
-        }
-        
+        var rockButtonPress = document.getElementById("rock_button").addEventListener("click", returnTrue);
+        // var rockButtonPress = document.getElementById("rock_button")
+        var paperButtonPress = document.getElementById("paper_button").addEventListener("click", returnTrue);
+        var scissorButtonPress = document.getElementById("scissor_button").addEventListener("click", returnTrue);
+
+
         function returnTrue() {
             console.log("You pressed the button!")
-            // return true;
+            return "pressed";
         }
 
+        function computerChoice(){
+                var values = ["rock", "paper", "scissors"];
+                var randomResult = values[Math.floor(Math.random() * values.length)];
+                document.getElementById("computerTextArea").innerHTML = "Computer choose: " + randomResult;
+                return randomResult;
+            }
+
+
+        function playerChoice() {
+            if (rockButtonPress === "pressed"){
+                return "rock";
+            } else if (paperButtonPress === true){
+                return "paper";
+            } else if (scissorButtonPress === true){
+                return "scissor";
+            } else {
+                return;
+            }
+            return;
+        }
+
+        const playerSelection = playerChoice();
+        console.log("Player chooses: " + playerSelection);
+        const computerSelection = computerChoice();
+        console.log("Computer chooses: " + computerSelection);
 
         </script>
     </body>
